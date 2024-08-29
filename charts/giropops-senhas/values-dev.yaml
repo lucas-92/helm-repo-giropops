@@ -1,0 +1,63 @@
+deployments:
+  giropops-senhas:
+    name: "giropops-senhas-helm"
+    image: "den7ee/giropops-senhas:latest"
+    replicas: "1"
+    ports:
+      - port: 5000
+        targetPort: 5000
+        name: "giropops-senhas-port"
+        serviceType: "NodePort"
+        NodePort: 32500
+      - port: 8088
+        targetPort: 8088
+        name: "giropops-senhas-metrics"
+        serviceType: "ClusterIP"
+    labels:
+      app: "giropops-senhas"
+      env: "dev"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+  redis:
+    name: "redis-helm"
+    image: "redis"
+    replicas: "1"
+    labels:
+      app: "redis"
+      env: "dev"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+services:
+  giropops-senhas:
+    ports:
+      - port: 5000
+        targetPort: 5000
+        name: "app"
+        serviceType: "NodePort"
+        NodePort: 32500
+      - port: 8088
+        targetPort: 8088
+        name: "metrics"
+        serviceType: "ClusterIP"
+    labels:
+      app: "giropops-senhas"
+      env: "dev"
+  redis:
+      ports:
+        - port: 6379
+          targetPort: 6379
+          name: "service"
+          serviceType: "ClusterIP"
+      labels:
+        app: "redis"
+        env: "dev"
