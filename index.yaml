@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  giropops-senhas:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-08-29T11:27:44.186077399+01:00"
+    description: A Helm chart for Kubernetes deployment of my application
+    digest: f8a5f748df39e4ffad3b314bad8f3448ab7b65a6eedc8e64f86cedecc3b5f555
+    name: giropops-senhas
+    type: application
+    urls:
+    - https://lucas-92.github.io/helm-repo-giropops/giropops-senhas-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-08-29T11:27:44.185088244+01:00"
